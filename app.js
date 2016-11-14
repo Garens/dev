@@ -16,6 +16,8 @@ app.set('views', path.join(__dirname, 'dist'));
 app.engine('html',require('ejs-mate'));
 app.set('view engine', 'html');
 
+app.use(session({ resave: true, saveUninitialized: true,  secret: 'prjuser'}));
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -27,6 +29,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use('/', require('./router/index'));
+app.use('/admin', require('./router/admin/index'));
 
 var port = normalizePort(process.env.PORT || config.app.webPort);
 app.set('port', port);

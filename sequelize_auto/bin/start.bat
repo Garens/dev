@@ -1,0 +1,1 @@
+node sequelize-auto -h localhost -d db_kh -u root -x root
