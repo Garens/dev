@@ -48,6 +48,10 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: '0'
     },
+    icon: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     type_id: {
       type: DataTypes.INTEGER(10),
       allowNull: false,

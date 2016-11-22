@@ -27,6 +27,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'assets/dist')));
 
 app.use('/', require('./router/index'));
 app.use('/admin', require('./router/admin/index'));

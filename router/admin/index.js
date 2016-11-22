@@ -2,10 +2,20 @@ var express = require('express'),
     router = express.Router();
 
 var Login = require('../../models/admin/login');
+var sysSet = require('../../models/admin/sysSet');
 
+
+router.get('/getMenuList',function(req,res){
+  sysSet.getMenuList(req.query,function(err,data){
+    if(err){
+      return res.send({msg:err});
+    }
+    res.send({list:data});
+  })
+})
 
 router.get('/', function(req, res) {
-  console.log(req.session);
+  // console.log(req.session);
   if(req.session.user){
     res.render('admin/desktop',{
       title:'后台管理首页面',
