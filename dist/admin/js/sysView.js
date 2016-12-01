@@ -9,7 +9,7 @@ $(function(){
     renderSysMenu:function(){
       $.get('/admin/getMenuList',function(data){
         var list = data.list;
-        console.log(list);
+        // console.log(list);
         for(var i in list){
           var item = list[i];
           var html = '';

@@ -3,6 +3,7 @@ var express = require('express'),
 
 var Login = require('../../models/admin/login');
 var sysSet = require('../../models/admin/sysSet');
+var artSet = require('../../models/admin/artSet');
 
 
 router.get('/getMenuList',function(req,res){
@@ -13,6 +14,37 @@ router.get('/getMenuList',function(req,res){
     res.send({list:data});
   })
 })
+
+router.get('/getMenuListPage',function(req,res){
+  sysSet.getMenuListPage(req.query,function(err,data){
+    if(err){
+      return res.send({msg:err});
+    }
+    console.log('22222=',data.count);
+    res.send({draw:req.query.draw,recordsTotal:data.count,recordsFiltered:data.count,data:data.rows});
+  })
+})
+
+router.get('/getTypeListPage',function(req,res){
+  artSet.getTypeListPage(req.query,function(err,data){
+    if(err){
+      return res.send({msg:err});
+    }
+    res.send({draw:req.query.draw,recordsTotal:data.count,recordsFiltered:data.count,data:data.rows});
+  })
+})
+
+router.post('/addArtType',function(req,res){
+  artSet.addArtType(req.body,function(err,data){
+    if(err){
+      console.log('文章分类添加失败:',err);
+      return res.send({flag:false,msg:'文章分类添加失败！'});
+    }
+    res.send({flag:true,data:data,msg:'添加成功！'});
+  })
+})
+
+
 
 router.get('/', function(req, res) {
   // console.log(req.session);

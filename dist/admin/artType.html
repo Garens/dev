@@ -1,6 +1,6 @@
 <!-- BEGIN PAGE HEADER-->
 <h3 class="page-title">
-Content Loading via Ajax <small>loading page content via ajax</small>
+文章管理 <small>分类管理</small>
 </h3>
 <div class="page-bar">
 	<ul class="page-breadcrumb">
@@ -10,7 +10,7 @@ Content Loading via Ajax <small>loading page content via ajax</small>
 			<i class="fa fa-angle-right"></i>
 		</li>
 		<li>
-			<a href="#">菜单管理</a>
+			<a href="#">分类管理</a>
 		</li>
 	</ul>
 
@@ -22,64 +22,55 @@ Content Loading via Ajax <small>loading page content via ajax</small>
     <div class="portlet box red">
       <div class="portlet-title">
         <div class="caption">
-          <i class="fa fa-cogs"></i>菜单设置
+          <i class="fa fa-cogs"></i>分类列表
         </div>
         <div class="actions">
-          <a href="#addMenuModal" data-toggle="modal" class="btn yellow">
+          <a href="#addTypeModal" data-toggle="modal" class="btn yellow">
 								<i class="fa fa-plus"></i> 添加 </a>
         </div>
       </div>
       <div class="portlet-body">
-          <table class="table table-hover" id="tabSetMenu">
+          <table class="table table-hover" id="tabArtTypeList">
           </table>
       </div>
     </div>
 	</div>
 </div>
 
-<div class="modal fade" id="addMenuModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="addTypeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-        <h4 class="modal-title">添加菜单</h4>
+        <h4 class="modal-title">添加分类</h4>
       </div>
       <div class="modal-body form">
-        <form class="form-horizontal" role="form">
+        <form class="form-horizontal" role="form" id="formArtType">
           <div class="form-body">
             <div class="form-group">
-              <label class="col-md-2 control-label">标题</label>
+              <label class="col-md-2 control-label">分类名</label>
               <div class="col-md-9">
                 <div class="input-icon">
                   <i class="fa fa-bell-o"></i>
-                  <input type="text" name="name" class="form-control" placeholder="标题">
+                  <input type="text" name="name" class="form-control" placeholder="分类名">
                 </div>
               </div>
             </div>
             <div class="form-group">
-              <label class="col-md-2 control-label">地址</label>
+              <label class="col-md-2 control-label">别名</label>
               <div class="col-md-9">
                 <div class="input-icon">
                   <i class="fa fa-bell-o"></i>
-                  <input type="text" name="url" class="form-control" placeholder="地址">
+                  <input type="text" name="alias" class="form-control" placeholder="别名">
                 </div>
               </div>
             </div>
             <div class="form-group">
-              <label class="col-md-2 control-label">图标</label>
+              <label class="col-md-2 control-label">描述</label>
               <div class="col-md-9">
                 <div class="input-icon">
                   <i class="fa fa-bell-o"></i>
-                  <input type="text" name="icon" class="form-control" placeholder="图标">
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-2 control-label">标题</label>
-              <div class="col-md-9">
-                <div class="input-icon">
-                  <i class="fa fa-bell-o"></i>
-                  <input type="text" name="" class="form-control" placeholder="标题">
+                  <input type="text" name="desc" class="form-control" placeholder="描述">
                 </div>
               </div>
             </div>
@@ -87,7 +78,7 @@ Content Loading via Ajax <small>loading page content via ajax</small>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn blue">保存</button>
+        <button type="button" class="btn blue" id="addArtType">保存</button>
         <button type="button" class="btn default" data-dismiss="modal">取消</button>
       </div>
     </div>
@@ -96,4 +87,6 @@ Content Loading via Ajax <small>loading page content via ajax</small>
   <!-- /.modal-dialog -->
 </div>
 <!-- END PAGE CONTENT-->
-<script src="/admin/js/setMenu.js" type="text/javascript"></script>
+<script type="text/javascript">
+	setArt.initTypeTable();
+</script>
